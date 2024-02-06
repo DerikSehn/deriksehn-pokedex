@@ -112,7 +112,7 @@
 
 @layer components {
   .section{
-    @apply flex flex-col min-h-96  w-full bg-raisin_black-300 ;
+    @apply flex flex-col min-h-screen  w-full bg-raisin_black-300 ;
   }
 }
 

@@ -1,13 +1,19 @@
+import { useGSAP } from '@gsap/react'
 import React from 'react'
+import gsap from 'gsap-trial'
 
 function Skills() {
-  return (
-         <div className="section" id='about'>
+  const ref = React.useRef(null)
 
-      <div className="relative h-full w-full mt-10 sm:mt-28">
-            aa
-      
-    </div>
+  
+  return (
+   <div ref={ref} className="section flex flex-col " id='skills'>
+     <div id='slide1' className="section relative h-full w-screen mt-10 sm:mt-28 text-center ">
+      Slide 1
+      </div>
+      <div id='slide1' className="section relative h-full w-screen mt-10 sm:mt-28 text-center ">
+      Slide 1
+      </div>
 </div>
   )
 }
