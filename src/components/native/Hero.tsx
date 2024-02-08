@@ -29,7 +29,7 @@ function Hero() {
   }, []);
 
   return (
-    <div id="hero" className="section flex flex-col relative h-[400px] sm:h-[500px] lg:h-[600px] xl:h-[700px] 2xl:h-[800px] justify-between items-center pt-24 text-center">
+    <div id="hero" className=" flex flex-col relative h-[400px] sm:h-[500px] lg:h-[600px] xl:h-[700px] 2xl:h-[800px] justify-between items-center pt-24 text-center">
       <div className='flex flex-col items-center justify-between h-[400px] text-6xl'>
         <h1 className='font-light hero-text'>
            Greetings, Traveler!

@@ -21,21 +21,15 @@ export default function Home() {
  
   useGSAP(
     (context) => {
-      let sections = gsap.utils.toArray("#smooth-content > div");
-      console.log(sections.length)
- 
-      smoother.current = ScrollSmoother.create({
-        smooth: 2,
+      ScrollSmoother.create({
+        smooth: 1,
         effects: true,
+        
       });
  
     },
     [smoother]
   );
-
-
-  const scrollyVideo = useRef();
-
 
   return (    
     <html lang="en cursor-none" > 
@@ -43,16 +37,16 @@ export default function Home() {
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
              rel="stylesheet"/>
       </head>
-         <body ref={smoother} className={`min-h-screen text-white bg-charcoal-100 text-cool_gray-900 font-bold text-4xl  `} >
+         <body ref={smoother} className={`min-h-screen text-white bg-cool_gray-900 text-cool_gray-900 font-bold text-4xl   `} >
              <MouseArrow/>
+             <div id="smooth-content" className="relative h-[2000vh] z-10"  >  
              <ImageSequence/>
-        {/*     <div id="smooth-content" className="relative h-[4000px]"  >  
               <Hero />
               <Skills />
               <Projects />
               <Contact />
               <Footer />
-            </div> */}
+            </div> 
        </body>
       </html>
 
