@@ -1,6 +1,7 @@
 "use client";
 import Contact from "@/components/native/Contact";
 import Footer from "@/components/native/Footer";
+import Header from "@/components/native/Header";
 import Hero from "@/components/native/Hero";
 import ImageSequence from "@/components/native/ImageSequence";
 import MouseArrow from "@/components/native/MouseArrow";
@@ -38,9 +39,10 @@ export default function Home() {
              rel="stylesheet"/>
       </head>
          <body ref={smoother} className={`min-h-screen text-white bg-cool_gray-900 text-cool_gray-900 font-bold text-4xl   `} >
-             <MouseArrow/>
+             {/* <MouseArrow/> */}
+             <Header/>
              <div id="smooth-content" className="relative h-[2000vh] z-10"  >  
-             <ImageSequence/>
+             {/* <ImageSequence/> */}
               <Hero />
               <Skills />
               <Projects />

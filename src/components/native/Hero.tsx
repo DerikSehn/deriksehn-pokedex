@@ -5,6 +5,16 @@ import { TypeAnimation } from 'react-type-animation';
 import Logo from './Logo';
  import gsap from 'gsap-trial';
 import { useGSAP } from '@gsap/react';
+import ScrollDown from './ScrollDown';
+import heroImg from '@/assets/images/hero-image-landing-page.png'
+import bgImg from '@/assets/images/logo.png'
+import profileImg from '@/assets/images/derik/animated-profile.png'
+import PokeLogo from './Logo';
+
+const images = [
+  profileImg,
+
+]
 
 function Hero() {
 
@@ -16,40 +26,85 @@ function Hero() {
       opacity: 0,
       delay: .2,
       ease: 'ease-in',
-      stagger: 1
+      stagger: .5
     })
     /* disappear on scrolltrigger */
     gsap.from('#arrow-down', {
       duration: 1,
       opacity: 0,
-      delay: 3,
       ease: 'ease-in',
     })
-    
+    /* image changes each 5 seconds */
+/*     for (let index = 0; index < 5; index++) {
+        setImage(images[index])      
+    } */
   }, []);
 
   return (
-    <div id="hero" className=" flex flex-col relative h-[400px] sm:h-[500px] lg:h-[600px] xl:h-[700px] 2xl:h-[800px] justify-between items-center pt-24 text-center">
-      <div className='flex flex-col items-center justify-between h-[400px] text-6xl'>
-        <h1 className='font-light hero-text'>
-           Greetings, Traveler!
-        </h1>
-        <br/>
-        <h1 className='max-w-screen-lg h-96 text-raisin_black-700 line-clamp-3 drop-shadow text-4xl font-bold hero-text'>
-           Here... take a little tour through my portfolio.
-        </h1>
-      </div> 
-      <div  id='arrow-down'
-      className='group flex flex-col text-3xl items-center justify-center bg-raisin_black-300  text-cool_gray-400 p-5 font-light  rounded-full gap-10'>
-        <span  >
-          scroll down and enjoy the show!
-          </span>
-      <span  className="material-icons transition-all duration-300 scale-[2.5] group-hover:scale-[3.5] p-5">
-        arrow_downward
-        </span>
+    <div id="hero" className=" flex flex-col h-screen min-h-[600px] relative justify-between z-1 items-center pt-24 text-center">
+      {/* bgImg */}
+     
+      <section className='container grid grid-cols-2'>
+
+        <div className='col-span-1 justify-center z-10'>
+        {/* rounded image */}
+          <Image 
+            className="rounded-full object-cover shadow-raisin_black-500  drop-shadow-2xl z-2"  
+            object-fit="cover" 
+            src={profileImg} alt="logo"/> 
+        </div>  
+
+        <div className='flex col-span-1 text-right h-full pt-28 justify-self-end '>
+          <h1 className='hero-text  fil tracking-tighter text-[white]/40 text-4xl' >
+            <section className='space-x-3 flex flex-col '>
+
+              <span>
+                  Descubra o real poder dos pokemons.  
+                </span>              
+              <span className='text-raisin_black-800 text-7xl tracking-wider'>
+              <TypeAnimation
+              preRenderFirstString
+                sequence={[
+                 
+                  '',
+                  2000,
+                'Bulbasaur',
+                2000,
+                'Ivysaur',
+                2000,
+                'Venusaur',
+                2000,
+                'Charmander',
+                2000,
+                'Charmeleon',
+                2000,
+                'Charizard',
+                2000,
+                'Squirtle',
+                2000,
+                'Wartortle',
+                2000,
+                ]}
+                speed={20}
+                deletionSpeed={20}
+
+                repeat={Infinity}
+             /> 
+                
+                </span> 
+            </section>
+          </h1>
+        </div>  
+
+        <div className='hero-text grid col-span-2 mt-32 content-center justify-items-center'>
+          <ScrollDown/>
+          <p className=' text-raisin_black-900 text-xl' > 
+            scroll down
+          </p>
+        </div>
+       
+        </section> 
       </div>
-   
-     </div>
   )
 }
 

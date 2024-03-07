@@ -63,7 +63,7 @@ function Skills() {
 
   
   return (
-   <div className="section grid grid-cols-2  w-[200dvw]" id='skills'>
+   <div className="section bg-cool_gray-100  grid grid-cols-2  w-[200dvw]" id='skills'>
      <section id='slide1' className="section w-screen  sm:mt-28 text-center ">
       Slide 1
     </section>

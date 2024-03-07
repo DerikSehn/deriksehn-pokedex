@@ -70,10 +70,10 @@
   font-family: "PlexThinItalic";
   src: url("../assets/fonts//IBM_Plex_Mono/IBMPlexMono-ThinItalic.ttf")
 }
-
+/* 
 * {
   cursor: none !important;  
-}
+} */
 
 
 /* when hovering over any element with id #r2, the element with id #cursor will grow and change its color */
@@ -112,7 +112,7 @@
 
 @layer components {
   .section{
-    @apply flex flex-col min-h-screen  w-full bg-raisin_black-100 ;
+    @apply flex flex-col min-h-screen  w-full ;
   }
 }
 

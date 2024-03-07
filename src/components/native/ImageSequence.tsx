@@ -8,21 +8,21 @@ export default function ScrollImageSequence(){
     const {apiUrl} = environment
 
     /* padstart 5 */
-    const [imageName, setImageName ] = useState('00001');
+    const [imageName, setImageName ] = useState('001');
 
     useEffect(() => {
         const handleScroll = () => {
             const scrollTop = window.scrollY;
-            const index = Math.floor(scrollTop / 80 + 1);
+            const index = Math.floor(scrollTop / 20 + 1);
             console.log(index);
-            setImageName(String(index).padStart(5, '0'));
+            setImageName(String(index).padStart(3, '0'));
         };
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
+    const src = `${apiUrl}/cars-video/ezgif-frame-${imageName}.jpg`
 
-    const src = `${apiUrl}/seq/${imageName}.jpg`
-
+    console.log(src);
     return <div className="absolute z-0 h-full">
      <Image
         width={1920}

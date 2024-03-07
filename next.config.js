@@ -6,7 +6,7 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'deriksehnstorage.s3.amazonaws.com',
         port: '',
-        pathname: '/seq/**',
+        pathname: '/cars-video/**',
       },
     ],
   },
