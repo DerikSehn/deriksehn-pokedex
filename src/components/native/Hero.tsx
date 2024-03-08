@@ -1,17 +1,12 @@
-import Image from 'next/image'
-import React from 'react'
-import MouseArrow from './MouseArrow'
-import { TypeAnimation } from 'react-type-animation';
-import Logo from './Logo';
-import gsap from 'gsap-trial';
 import { useGSAP } from '@gsap/react';
-import ScrollDown from './ScrollDown';
- import heroBg from '@/assets/images/ui/hero-versotech.webp'
+import gsap from 'gsap-trial';
+import Image from 'next/image';
+import React from 'react';
+import { TypeAnimation } from 'react-type-animation';
 
- import charizard from '@/assets/images/charizard.png'
-import PokeLogo from './Logo';
-import { SearchParamsContext } from '../../../node_modules/next/dist/shared/lib/hooks-client-context.shared-runtime';
-import SearchInput from './util/SearchInput';
+ import heroBgImg from '@/assets/images/ui/hero-versotech.webp';
+
+ import charizard from '@/assets/images/charizard.png';
 
 function Hero() {
 
@@ -52,12 +47,12 @@ function Hero() {
         repeat: -1,
         translateX: -10,
         yoyo: true, 
-        filter: 'drop-shadow(0 0 2rem #ff0000)',
+        filter: 'drop-shadow(0 0 1rem #ff0000)',
         ease: 'circle',
         duration: 2.2,
       });
     /* scrollTrigger for charizard-hero-image */
-   /*  gsap.fromTo('#charizard-hero-image',{
+    gsap.fromTo('#hero-image-squirtle',{
       y: '0%',
       x: '0%',
     }, {
@@ -65,28 +60,43 @@ function Hero() {
       x: '100%',
       scale: 5,
       opacity: 0, 
-      ease: 'ease-in-out',           
-      filter: 'drop-shadow(0 0 0rem #ff0000)',
+      ease: 'ease-in-out',     
       scrollTrigger: {
         trigger: "#hero",
         start: "bottom bottom",
         end: "bottom top",
         scrub: 1,
       }
-    })    */
-    
+    })   
+     gsap.fromTo('#hero',{
+     borderBottomLeftRadius: '0%',
+     borderBottomRightRadius: '0%',
+    }, {
+      borderBottomLeftRadius: '20%',
+      borderBottomRightRadius: '20%',
+      ease: 'ease-in-out',     
+      scrollTrigger: {
+        trigger: "#hero",
+        start: "bottom bottom",
+        end: "bottom top",
+        scrub: 1,
+      }
+    })   
 
   }, []);
 
   return (
     <div id="hero"
-     style={{
-      backgroundImage: `url(${charizard})`,
-     }}
-
     className="flex flex-col bg-gradient-to-b  h-screen min-h-[600px] lg:rounded-b-[50%] md:rounded-b-[20%] overflow-hidden relative justify-between z-1 items-center pt-24 text-center">
       {/* bgImg */}
+      <Image 
+      id="hero-image-squirtle"
+      className="absolute z-0"
+      src={heroBgImg} alt="logo"
+      layout="fill"
+      objectFit="cover"
 
+      />
       <section className='container grid grid-cols-2'>
 
         <div id='charizard-hero-div' 
@@ -111,7 +121,7 @@ function Hero() {
               <span className='text-4xl '>
                 Discover the real power of <h1 className='text-naples_yellow-400 text-9xl font-moglan'>Pokemon!</h1>
               </span>
-              <span className='text-coquelicot-700 text-6xl tracking-wider'>
+              <span className='text-coquelicot-900 text-6xl tracking-wider'>
                 <TypeAnimation
                   preRenderFirstString
                   sequence={[
