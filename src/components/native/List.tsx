@@ -1,6 +1,7 @@
 import { useGSAP } from '@gsap/react'
 import React from 'react'
 import gsap from 'gsap-trial'
+import SearchInput from './util/SearchInput';
 
 /* // ---------- scrollTrigger plugin registration
 gsap.registerPlugin(ScrollTrigger);
@@ -34,7 +35,7 @@ ReactDOM.render(<App />, document.getElementById("root"));
  */
 
 
-function Skills() {
+function List() {
   const ref = React.useRef(null)
 
 
@@ -42,17 +43,17 @@ function Skills() {
 
   useGSAP(
     (context) => {
-      const horizontalSections = gsap.utils.toArray("#skills > section");
+      const horizontalSections = gsap.utils.toArray("#List > section");
       console.log(horizontalSections.length)
       gsap.to(horizontalSections, {
         xPercent: -100 * (horizontalSections.length - 1),
         ease: "none",
         scrollTrigger: {
-          trigger: "#skills",
+          trigger: "#List",
           start: "bottom bottom",
           pin: true,
           scrub: 1,
-          end: () => "+=" + document.querySelector("#skills")
+          end: () => "+=" + document.querySelector("#List")
             ?.offsetWidth
         }
       });
@@ -63,15 +64,19 @@ function Skills() {
 
 
   return (
-    <div className="section bg-cool_gray-100  grid grid-cols-2  w-[200dvw]" id='skills'>
-      <section id='slide1' className="section w-screen  sm:mt-28 text-center ">
-        Slide 1
-      </section>
-      <section id='slide1' className="section w-screen  sm:mt-28 text-center ">
-        Slide 2
-      </section>
+    <div className="section bg-cool_gray-100  grid grid-cols-2  w-[200dvw]" id='List'>
+        <section id='slide1' className="section w-screen pt-40 lg:px-20 sm:mt-28 grid lg:grid-cols-3 grid-cols-1  content-start ">
+        <div className='w-full flex flex-col justify-center space-y-2'></div>
+        </section>
+       
+        <section id='slide1' className="section w-screen pt-40 lg:px-20 sm:mt-28 grid lg:grid-cols-3 grid-cols-1 content-start">
+          <div className='w-full flex flex-col justify-center space-y-2'>
+            <h1 className="text-6xl font-bold text-naples_yellow-400">PokeDex</h1>
+            <SearchInput  />
+          </div>
+        </section>
     </div>
   )
 }
 
-export default Skills
+export default List

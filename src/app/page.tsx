@@ -6,7 +6,7 @@ import Hero from "@/components/native/Hero";
 import ImageSequence from "@/components/native/ImageSequence";
 import MouseArrow from "@/components/native/MouseArrow";
 import Projects from "@/components/native/Projects";
-import Skills from "@/components/native/Skills";
+import List from "@/components/native/List";
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap-trial';
 import { ScrollSmoother } from 'gsap-trial/ScrollSmoother';
@@ -39,13 +39,13 @@ export default function Home() {
           rel="stylesheet" />
       </head>
       {/* gradient left dark blue */}
-      <body ref={smoother} className={`min-h-screen text-white bg-gradient-to-r from-rich_black-600  to-moonstone-200 text-cool_gray-900 font-bold text-4xl   `} >
+      <body ref={smoother} className={`min-h-screen text-white bg-gradient-to-r from-rich_black-500  to-rich_black-200 text-cool_gray-900 font-bold text-4xl   `} >
         {/* <MouseArrow/> */}
         <Header />
         <div id="smooth-content" className="relative h-[2000vh] z-10"  >
           {/* <ImageSequence/> */}
           <Hero />
-          <Skills />
+          <List />
           <Projects />
           <Contact />
           <Footer />
