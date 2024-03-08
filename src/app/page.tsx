@@ -19,38 +19,39 @@ gsap.registerPlugin(useGSAP, ScrollTrigger, ScrollSmoother);
 export default function Home() {
 
   const smoother = useRef();
- 
+
   useGSAP(
     (context) => {
       ScrollSmoother.create({
         smooth: 1,
         effects: true,
-        
+
       });
- 
+
     },
     [smoother]
   );
 
-  return (    
-    <html lang="en cursor-none" > 
+  return (
+    <html lang="en cursor-none" >
       <head>
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-             rel="stylesheet"/>
+          rel="stylesheet" />
       </head>
-         <body ref={smoother} className={`min-h-screen text-white bg-cool_gray-900 text-cool_gray-900 font-bold text-4xl   `} >
-             {/* <MouseArrow/> */}
-             <Header/>
-             <div id="smooth-content" className="relative h-[2000vh] z-10"  >  
-             {/* <ImageSequence/> */}
-              <Hero />
-              <Skills />
-              <Projects />
-              <Contact />
-              <Footer />
-            </div> 
-       </body>
-      </html>
+      {/* gradient left dark blue */}
+      <body ref={smoother} className={`min-h-screen text-white bg-gradient-to-r from-rich_black-600  to-moonstone-200 text-cool_gray-900 font-bold text-4xl   `} >
+        {/* <MouseArrow/> */}
+        <Header />
+        <div id="smooth-content" className="relative h-[2000vh] z-10"  >
+          {/* <ImageSequence/> */}
+          <Hero />
+          <Skills />
+          <Projects />
+          <Contact />
+          <Footer />
+        </div>
+      </body>
+    </html>
 
   )
 }
