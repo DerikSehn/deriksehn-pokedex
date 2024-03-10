@@ -1,7 +1,10 @@
+import Pokeball from '@/components/native/util/Pokebal'
 import React from 'react'
 
 export default function page() {
   return (
-    <div>Under Construction</div>
+    <div>
+      Hi
+    </div>
   )
 }

@@ -40,7 +40,7 @@ export default function Home() {
           rel="stylesheet" />
       </head>
       {/* gradient left dark blue */}
-      <body ref={smoother} className={`min-h-screen text-white bg-gradient-to-r from-rich_black-500  to-rich_black-200 text-cool_gray-900 font-bold text-4xl   `} >
+      <body ref={smoother} className={`min-h-screen text-white bg-gradient-to-b from-rich_black-900/30  to-rich_black-900/5 text-cool_gray-900 font-bold text-4xl   `} >
         {/* <MouseArrow/> */}
         <Header />
         <div id="smooth-content" className="relative h-[2000vh] z-10"  >
