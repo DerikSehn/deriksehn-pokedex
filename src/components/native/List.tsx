@@ -3,6 +3,7 @@ import React from 'react'
 import gsap from 'gsap-trial'
 import SearchInput from './util/SearchInput';
 import PokeDexCard from './elements/PokeDex';
+import PokeList from './PokeList';
 
 
 
@@ -29,10 +30,10 @@ function List() {
         }
       });
       gsap.fromTo('#slide2', {
-        borderRadius: '50%'
+      
       }, {
 
-        borderRadius: '0%',
+        
 
         ease: 'linear',
         scrollTrigger: {
@@ -51,9 +52,10 @@ function List() {
 
   return (
     <div className="z-0 section relative  grid grid-cols-2  w-[200dvw]" id='List'>
-      <section id='slide1' className="relative z-2 section w-screen flex flex-col items-center z-2 ">
+      <section id='slide1' className="relative z-2 section w-screen h-screen flex flex-col items-center z-2 ">
+        {/* Ao apontar para um pokemon na lista, aparecer */}
         <PokeDexCard id="pokedex-card">
-          <h2 className='p-4 text-2xl text-center col-span-12 flex items-center flex-col text-naples_yellow-400 bg-rich_black-600 font-mont'>
+          <h2 className='p-4 text-3xl text-center col-span-12 flex items-center flex-col text-naples_yellow-400 bg-rich_black-600 font-mont'>
             <span className='flex'>
               The
               <div className='font-pokemon-solid px-2'>
@@ -77,8 +79,7 @@ function List() {
 
       <section id='slide2' className="section z-1  w-screen h-screen   bg-naples_yellow-400  grid lg:grid-cols-12 grid-cols-1 content-start">
         <div id="slide-2-filters" className='fixed w-full col-span-3 p-4 pt-28 flex flex-col justify-center space-y-2'>
-          <h1 className="text-6xl font-bold text-rich_black-700">PokeDex</h1>
-          <SearchInput />
+          <PokeList />
         </div>
       </section>
     </div>
