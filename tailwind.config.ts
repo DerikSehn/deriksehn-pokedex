@@ -15,7 +15,8 @@ const config = {
   prefix: "",
   theme: {
     fontFamily: {
-      moglan: 'moglan',
+      moglan: 'moglan', 
+      'pokemon-solid': 'PokemonSolid',
       sans: ['ui-sans-serif', 'system-ui'],
       serif: ['ui-serif', 'Georgia'],
       mono: ['ui-monospace', 'SFMono-Regular'],

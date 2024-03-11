@@ -68,7 +68,11 @@
 
 @font-face {
   font-family: "PlexThinItalic";
-  src: url("../assets/fonts//IBM_Plex_Mono/IBMPlexMono-ThinItalic.ttf")
+  src: url("../assets/fonts/IBM_Plex_Mono/IBMPlexMono-ThinItalic.ttf")
+}
+@font-face {
+  font-family: "PokemonSolid";
+  src: url("../assets/fonts/pokemon/Pokemon\ Solid.ttf")
 }
 /* 
 * {

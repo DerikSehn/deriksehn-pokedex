@@ -7,6 +7,7 @@ import { TypeAnimation } from 'react-type-animation';
 import heroBgImg from '@/assets/images/ui/hero-versotech.webp';
 
 import charizard from '@/assets/images/charizard.png';
+import Blob1 from '../blob/Blob1';
 
 function Hero() {
 
@@ -52,7 +53,7 @@ function Hero() {
       duration: 2.2,
     });
     /* scrollTrigger for charizard-hero-image */
-    gsap.fromTo('#hero-image-squirtle', {
+    /* gsap.fromTo('#hero-image-squirtle', {
       y: '0%',
       x: '0%',
     }, {
@@ -66,7 +67,7 @@ function Hero() {
         end: "bottom top",
         scrub: 1,
       }
-    })
+    }) */
     gsap.fromTo('#hero', {
       borderBottomLeftRadius: '0%',
       borderBottomRightRadius: '0%',
@@ -86,11 +87,12 @@ function Hero() {
 
   return (
     <div id="hero"
-      className="flex flex-col    h-screen min-h-[600px] lg:rounded-b-[50%] md:rounded-b-[20%] overflow-hidden relative justify-between z-1 items-center pt-24 text-center">
+      className="flex flex-col   h-screen min-h-[600px] lg:rounded-b-[50%] md:rounded-b-[20%] overflow-hidden relative justify-between z-2 items-center pt-24 text-center">
       {/* bgImg */}
       <Image
+        data-speed=".5"
         id="hero-image-squirtle"
-        className="absolute z-0"
+        className="absolute z-1"
         src={heroBgImg} alt="logo"
         layout="fill"
         objectFit="cover"
@@ -117,6 +119,8 @@ function Hero() {
         <div className='flex col-span-1 text-right h-full pt-40 justify-self-end '>
           <h1 className='hero-text  flex flex-col tracking-tighter text-[white]/60 text-4xl' >
             <section className='space-x-3 flex flex-col '>
+
+
               <span className='text-4xl '>
                 Discover the real power of <h1 className='text-naples_yellow-400 text-9xl font-moglan'>Pokemon!</h1>
               </span>
@@ -151,6 +155,7 @@ function Hero() {
                 />
 
               </span>
+
 
 
             </section>

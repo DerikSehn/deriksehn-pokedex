@@ -17,11 +17,11 @@ const Header = () => {
           <Logo />
         </Link>
         <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
-          <Link href="/about" className="mr-5 hover:text-gray-900">
-            About
-          </Link>
-          <Link href="/contact" className="mr-5 hover:text-gray-900">
+          <Link href="https://wa.link/b9rwyc" className="mr-5 hover:text-gray-900">
             Contact
+          </Link>
+          <Link href="http://deriksehn-portifolio.s3-website.us-east-2.amazonaws.com/" className="mr-5 hover:text-gray-900">
+            About
           </Link>
         </nav>
         <UserButton afterSignOutUrl="/" />
