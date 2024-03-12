@@ -1,10 +1,10 @@
-import Pokeball from '@/components/native/util/Pokebal'
 import React from 'react'
+import { Counter } from './Counter'
 
 export default function page() {
   return (
     <div>
-      Hi
+      <Counter/>
     </div>
   )
 }

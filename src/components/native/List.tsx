@@ -3,8 +3,7 @@ import React from 'react'
 import gsap from 'gsap-trial'
 import SearchInput from './util/SearchInput';
 import PokeDexCard from './elements/PokeDex';
-import PokeList from './PokeList';
-
+ 
 
 
 
@@ -79,7 +78,7 @@ function List() {
 
       <section id='slide2' className="section z-1  w-screen h-screen   bg-naples_yellow-400  grid lg:grid-cols-12 grid-cols-1 content-start">
         <div id="slide-2-filters" className='fixed w-full col-span-3 p-4 pt-28 flex flex-col justify-center space-y-2'>
-          <PokeList />
+        
         </div>
       </section>
     </div>
