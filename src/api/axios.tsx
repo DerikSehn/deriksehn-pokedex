@@ -29,6 +29,6 @@ export const createApiRequest = async (
     // throw new Error(JSON.stringify({ statusCode, messages }));
   }
 };
-export const baseImageUrl = "https://pokeapi.co/api/v2/pokemon";
+export const baseImageUrl = "https://pokeapi.co/api/v2";
 
 export default axios;

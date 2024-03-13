@@ -22,6 +22,9 @@ const InfiniteScrollContext = createContext<ContextType>({
 });
 
 const Waypoint = () => {
+
+
+  console.log('render')
   const { isLoading, setPage, page, paginationHandler, data } = useContext(
     InfiniteScrollContext
   );
@@ -29,6 +32,7 @@ const Waypoint = () => {
 
   useEffect(() => {
     setPage(data.length - (data.length % 6));
+    console.log("useEffect", page, data.length, data.length % 6)
     //eslint-disable-next-line
   }, []);
 

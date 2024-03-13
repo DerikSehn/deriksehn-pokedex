@@ -85,7 +85,7 @@ const pokemonsSlice = createSlice({
       action: PayloadAction<{ pokemon: Pokemon; index: number; size: number }>
     ) {
       const { pokemon, size, index } = action.payload;
-
+      console.log(pokemon)
       const isPokemonAlreadyExists = state.data.find(
         (existingPokemon: any) =>
           existingPokemon !== null && existingPokemon.id === pokemon.id

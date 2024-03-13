@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import React from "react";
 import { JSX } from "react/jsx-runtime";
 
-const SearchInput = ({onSearch, ...inputProps}: {onSearch: () => any} & JSX.IntrinsicAttributes & React.ClassAttributes<HTMLInputElement> & React.InputHTMLAttributes<HTMLInputElement>) => {
+const SearchInput = ({onSearch, ...inputProps}: {onSearch?: () => any} & JSX.IntrinsicAttributes & React.ClassAttributes<HTMLInputElement> & React.InputHTMLAttributes<HTMLInputElement>) => {
 
     const [searchValue, setSearchValue] = React.useState("");
 

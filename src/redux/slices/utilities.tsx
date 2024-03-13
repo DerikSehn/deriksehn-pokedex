@@ -26,7 +26,7 @@ export type WrapReduxAsyncHandlerType = (
   args?: any
 ) => (dispatch: React.Dispatch<any>) => Promise<void>;
 
-export const wrapReduxAsyncHandler = (
+/* export const wrapReduxAsyncHandler = (
   statusHandler: StatusHandler,
   callback: (dispatch: Dispatch<any>, args: any) => Promise<void>
 ) => ((args?: any) => async (dispatch: Dispatch<any>) => {
@@ -39,7 +39,26 @@ export const wrapReduxAsyncHandler = (
     .catch((err) => {
       console.error(err);
     });
-});
+}) ; */
+
+export const wrapReduxAsyncHandler = (
+  statusHandler: StatusHandler,
+  callback: (dispatch: Dispatch<any>, args: any) => Promise<void>
+) => {
+
+  return  (args: any) => async (dispatch: Dispatch<any>) =>  {
+
+      console.log(dispatch )
+  dispatch(statusHandler.initialize({}));
+   console.log("args", statusHandler)
+  callback(dispatch, {})
+    .then(() => {
+      dispatch(statusHandler.success({}));
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+}};
 
 export const transformSpriteToBaseImage = (
   pokemonId: number,

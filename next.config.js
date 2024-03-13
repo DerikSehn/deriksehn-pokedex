@@ -17,7 +17,7 @@ const nextConfig = {
           protocol: 'https',
           hostname: 'pokeapi.co',
           port: '',
-          pathname: '/api/v2/pokemon/**',
+          pathname: '/api/v2/**',
         },
       ],
     },
