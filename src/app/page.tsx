@@ -19,9 +19,6 @@ import { LocomotiveScrollProvider } from 'react-locomotive-scroll'
 gsap.registerPlugin(useGSAP, ScrollTrigger );
 
 export default function Home() {
- 
-
-  
 
 
   return (

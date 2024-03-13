@@ -1,3 +1,4 @@
+"use client";
 import React, { useEffect } from "react"; 
 import { useSelector } from "react-redux"; 
 import { getPokemons, pokemonsSelector } from "@/redux/slices/pokemonSlice";
@@ -26,6 +27,8 @@ const PokemonsPage = () => {
   }, [])
   
 
+  
+  console.log(pokemons)
   return ( 
       <InfiniteScroll
         data={pokemons.data}
