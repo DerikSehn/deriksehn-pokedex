@@ -5,6 +5,7 @@ import { lPad } from "@/lib/lPad";
 
 export const statusHandlerReducer = {
   initialize: (state: any, action: PayloadAction) => {
+    console.log("state", state, action)
     state.status.state = SliceStatus.LOADING;
   },
   error: (state: any, action: PayloadAction) => {
@@ -28,9 +29,9 @@ export type WrapReduxAsyncHandlerType = (
 export const wrapReduxAsyncHandler = (
   statusHandler: StatusHandler,
   callback: (dispatch: Dispatch<any>, args: any) => Promise<void>
-) => (args?: any) => async (dispatch: Dispatch<any>) => {
+) => ((args?: any) => async (dispatch: Dispatch<any>) => {
   dispatch(statusHandler.initialize({}));
-
+   console.log("args", statusHandler)
   callback(dispatch, args)
     .then(() => {
       dispatch(statusHandler.success({}));
@@ -38,11 +39,12 @@ export const wrapReduxAsyncHandler = (
     .catch((err) => {
       console.error(err);
     });
-};
+});
 
 export const transformSpriteToBaseImage = (
   pokemonId: number,
   baseUrl: string
 ): string => {
+  console.log("pokemonId", pokemonId, baseUrl)
   return baseUrl + lPad(pokemonId, 3) + ".png";
 };

@@ -9,31 +9,19 @@ import Projects from "@/components/native/Projects";
 import List from "@/components/native/List";
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap-trial';
-import { ScrollSmoother } from 'gsap-trial/ScrollSmoother';
-import { ScrollTrigger } from 'gsap-trial/ScrollTrigger';
+ import { ScrollTrigger } from 'gsap-trial/ScrollTrigger';
 import { useRef } from "react";
 import React from "react"; 
 import PokeProvider from "@/redux/PokeProvider";
 import Pokemons from "./pokemons/page";
+import { LocomotiveScrollProvider } from 'react-locomotive-scroll'
 
-
-gsap.registerPlugin(useGSAP, ScrollTrigger, ScrollSmoother);
+gsap.registerPlugin(useGSAP, ScrollTrigger );
 
 export default function Home() {
+ 
 
-  const smoother = useRef();
-
-  useGSAP(
-    (context) => {
-      ScrollSmoother.create({
-        smooth: 1,
-        effects: true,
-
-      });
-
-    },
-    [smoother]
-  );
+  
 
 
   return (
@@ -42,8 +30,22 @@ export default function Home() {
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
           rel="stylesheet" />
       </head>
-    
-      <body ref={smoother} className={`min-h-screen text-white bg-gradient-to-b from-rich_black-900/30  to-rich_black-900/5 text-cool_gray-900 font-bold text-4xl   `} >
+    {/*     
+    !!! Disabled because this alternative to GSAP's ScrollSmoother does not work unless you pay a unfair amount of money for their license. !!!
+    <LocomotiveScrollProvider
+          options={
+            {
+              smooth: true,
+              tablet: {
+                smooth: true
+              },
+              smartphone: {
+                smooth: true
+              }
+            }
+          }> */}
+
+      <body /* data-scroll-container */ className={`min-h-screen text-white bg-gradient-to-b from-rich_black-900/30  to-rich_black-900/5 text-cool_gray-900 font-bold text-4xl   `} >
         {/* <MouseArrow/> */}
         <Header />
         <div id="smooth-content" className="relative h-[2000vh] z-10"  >
@@ -55,6 +57,8 @@ export default function Home() {
           <Footer />
         </div>
       </body>
+    {/*   </LocomotiveScrollProvider>
+ */}
     </html>
 
   )

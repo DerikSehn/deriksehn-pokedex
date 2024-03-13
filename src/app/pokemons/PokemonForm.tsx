@@ -4,6 +4,7 @@ import { pokemonsSelector, resetPokemonsReducer } from "@/redux/slices/pokemonSl
 import React, { useEffect, useRef, useState } from "react"; 
 import { useDispatch, useSelector } from "react-redux";
 import PokemonGenerations from "./PokemonGenerations";
+import SearchInput from "@/components/native/util/SearchInput";
 
 
 type Props = {
@@ -48,6 +49,7 @@ const PokemonForm = ({
   };
 
   const changeGenerationHandler = () => {
+    console.log("changeGenerationHandler", value)
     if (!isLoading) {
       dispatch(resetPokemonsReducer({} as {} & void));
       dispatch(filterPokemonsByGenerationReducer({ selectedGeneration }));
@@ -61,18 +63,13 @@ const PokemonForm = ({
   };
 
   return (
-    <div className="flex items-center justify-center md:justify-start flex-wrap">
+    <div className="flex items-center justify-center flex-col flex-wrap">
       <div className="relative inline-flex">
-        <span className="absolute inset-y-0 left-0 flex items-center pl-2">
-          <div className="absolute flex items-center justify-center pointer-events-none">
-            <i className="material-icons text-white scale-150">search</i>
-          </div>
-        </span>
-
-        <input
-          className="py-2 pl-10 md:pr-24 lg:pr-48  w-full text-sm rounded-lg bg-primaryGray text-tertiaryGray placeholder-tertiaryGray appearance-none focus:outline-none focus:font-medium focus:border-secondaryGray"
-          placeholder={placeholder || "Search an item..."}
+          
+        <SearchInput
+          placeholder={placeholder || "Search an item"}
           value={value}
+          onSearch={() => submitFormHandler()}
           onKeyPress={(e: React.KeyboardEvent) => {
             if (e.key === "Enter") {
               submitFormHandler();

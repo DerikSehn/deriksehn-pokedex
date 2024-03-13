@@ -108,6 +108,7 @@ const pokemonsSlice = createSlice({
       }
     },
     resetPokemonsReducer(state: any, action: any) {
+      console.log(state)
       state.data = [];
     },
   },
@@ -134,7 +135,7 @@ export const getPokemons = wrapReduxAsyncHandler(
     const size = PAGINATE_SIZE - (pokemons.length % PAGINATE_SIZE);
     const results = cachedPokemons.slice(page, page + size);
     dispatch(initializePokemonsReducer({ size }));
-
+    console.log( results)
     for await (const [index, { url }] of results.entries()) {
       const pokemonId = Number(url.split("/").slice(-2)[0]);
       const pokemon = await fromApi.getPokemonByNameOrId(pokemonId);

@@ -7,7 +7,7 @@ class ApiCallCreator {
       `/pokemon/?limit=${limit}&offset=${offset}`,
       HTTP_METHODS.GET,
       {}
-    );
+    );  
   }
   getPokemonByNameOrId(id: number | string) {
     return createApiRequest(`/pokemon/${id}/`, HTTP_METHODS.GET, {});

@@ -3,6 +3,7 @@ import { NamedAPIResource } from "./types";
 import { statusHandlerReducer, wrapReduxAsyncHandler } from "./utilities";
 import { SliceStatus } from "@/lib/globals";
 import { shuffle } from "@/lib/utils/shuffle";
+// @ts-ignore
 import Levenshtein from "fast-levenshtein";
 import { RootState } from "../store";
 import fromApi from "@/api/fromApi";
@@ -56,9 +57,10 @@ const cachedPokemonsSlice = createSlice({
       }>
     ) {
       const { pokemonName } = action.payload;
-
+      console.log(state.data)
       state.data = state.cache
         .map((pokemon) => {
+          console.log(pokemon)
           return {
             ...pokemon,
             distance: Levenshtein.get(pokemon.name, pokemonName),

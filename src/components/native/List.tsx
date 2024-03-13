@@ -34,11 +34,12 @@ function List() {
         }
       });
       gsap.fromTo('#slide2', {
-      
+         borderTopLeftRadius: '30%',
+         borderBottomLeftRadius: '30%',
+         
       }, {
-
-        
-
+        borderTopLeftRadius: '0%',
+        borderBottomLeftRadius: '0%',
         ease: 'linear',
         scrollTrigger: {
           trigger: "#slide2",
@@ -47,7 +48,6 @@ function List() {
           scrub: 1,
         }
       })
-
     },
     [ref]
   );
@@ -81,20 +81,22 @@ function List() {
         </PokeDexCard>
       </section>
 
-      <section id='slide2' className="section z-1 pt-32 2xl:pt-52  w-screen h-screen  bg-finn-100 ">
+      <section id='slide2' className="section z-1 pt-32 2xl:pt-32  w-screen h-screen  bg-finn-100 ">
         <div className='absolute w-full h-full top-0'> 
        <Image 
-        id="hero-image-squirtle"
+        id="slide2-image-background"
         className="z-1 w-full h-full object-cover brightness-50"
         src={listbgImg} alt="logo"
         layout="fill"
         objectFit="cover"
         />
-        <div className='absolute w-full h-full bg-gradient-to-b from-rich_black-100/0  via-ebony-100 to-rich_black-600 z-2'></div>
+        <div className='absolute w-full h-full bg-gradient-to-b from-rich_black-100/0  via-ebony-100 to-rich_black-600 z-2'/>
+        </div> 
+          <div className='flex text-6xl font-pokemon-solid justify-center text-naples_yellow-400 shadow-rich_black-700 drop-shadow-2xl'>
+          PokéDex 
         </div>
-           
           <PokeProvider>
-            <Filters/>
+            <div className='lg:mt-32 mt-10'/>
             <Pokemons/>
           </PokeProvider>
       </section>

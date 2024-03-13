@@ -1,3 +1,4 @@
+
 import PokemonIcon from "@/components/native/util/PokemonIcon";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
@@ -5,43 +6,43 @@ import { importPokemonImage } from "@/lib/globals";
 import { PokemonGenerationsEnum } from "@/redux/slices/cachedPokemonsSlice";
 import React, { useCallback } from "react";
 import PokemonGenerationCard from "./PokemonGenerationCard";
- 
- 
+
+
 const generations = [
   [
-    importPokemonImage("bulbasaur"),
-    importPokemonImage("charmander"),
     importPokemonImage("squirtle"),
+    importPokemonImage("charmander"),
+    importPokemonImage("bulbasaur"),
   ],
   [
-    importPokemonImage("chikorita"),
-    importPokemonImage("cyndaquil"),
     importPokemonImage("totodile"),
+    importPokemonImage("cyndaquil"),
+    importPokemonImage("chikorita"),
   ],
   [
-    importPokemonImage("treecko"),
-    importPokemonImage("torchic"),
     importPokemonImage("mudkip"),
+    importPokemonImage("torchic"),
+    importPokemonImage("treecko"),
   ],
   [
-    importPokemonImage("turtwig"),
-    importPokemonImage("chimcar"),
     importPokemonImage("piplup"),
+    importPokemonImage("chimcar"),
+    importPokemonImage("turtwig"),
   ],
   [
-    importPokemonImage("snivy"),
-    importPokemonImage("tepig"),
     importPokemonImage("oshawott"),
+    importPokemonImage("tepig"),
+    importPokemonImage("snivy"),
   ],
   [
-    importPokemonImage("chespin"),
-    importPokemonImage("fennekin"),
     importPokemonImage("froakie"),
+    importPokemonImage("fennekin"),
+    importPokemonImage("chespin"),
   ],
   [
-    importPokemonImage("rowlet"),
-    importPokemonImage("litten"),
     importPokemonImage("popplio"),
+    importPokemonImage("litten"),
+    importPokemonImage("rowlet"),
   ],
 ];
 
@@ -53,7 +54,17 @@ type Props = {
   changeGenerationHandler: () => void;
   isLoading: boolean;
 };
-
+/**
+ * Componente que exibe as gerações de Pokémon e permite selecionar uma geração.
+ * 
+ * @component
+ * @param {Object} Props - As propriedades do componente.
+ * @param {PokemonGenerationsEnum | null} Props.selectedGeneration - A geração de Pokémon selecionada.
+ * @param {React.Dispatch<React.SetStateAction<PokemonGenerationsEnum | null>>} Props.setSelectedGeneration - Função para atualizar a geração de Pokémon selecionada.
+ * @param {() => void} Props.changeGenerationHandler - Função para lidar com a mudança de geração.
+ * @param {boolean} Props.isLoading - Indica se o componente está carregando.
+ * @returns {JSX.Element} O componente PokemonGenerations.
+ */
 const PokemonGenerations = ({
   selectedGeneration,
   setSelectedGeneration,

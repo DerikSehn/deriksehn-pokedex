@@ -4,6 +4,7 @@ import { Pokemon } from "@/redux/slices/pokemonSlice";
 import { PokemonTypeColors, PokemonTypePlaceholders } from "@/lib/globals";
 import Trail from "./Trail";
 import { lPad } from "@/lib/lPad";
+import Image from "next/image";
 
 const MaskStyling = {
   width: 130,
@@ -75,7 +76,7 @@ const PokemonCard = ({ id, name, sprites, types }: Props) => {
               preview={imagePlaceholder[0]}
               src={sprites.frontDefault}
               render={(src, style) => (
-                <img src={src} style={style} alt={name} />
+                <Image src={src} layout="fill" objectFit="contain" alt={name} />
               )}
             />
           </div>

@@ -1,4 +1,4 @@
-import React from "react"; 
+import React, { useEffect } from "react"; 
 import { useSelector } from "react-redux"; 
 import { getPokemons, pokemonsSelector } from "@/redux/slices/pokemonSlice";
 import { cachedPokemonsSelector } from "@/redux/slices/cachedPokemonsSlice";
@@ -12,11 +12,25 @@ const PokemonsPage = () => {
   const pokemons = useSelector(pokemonsSelector);
   const cachedPokemons = useSelector(cachedPokemonsSelector);
 
+  const handleGetPokemons = () => {
+    
+    const obj = { page: 0, cachedPokemons: cachedPokemons.data, pokemons: pokemons.data }
+
+    console.log(obj)
+    getPokemons(obj);
+  };
+  useEffect(() => {
+    handleGetPokemons();
+  
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+  
+
   return ( 
       <InfiniteScroll
         data={pokemons.data}
         paginationHandler={(page: number) =>
-          getPokemons({
+         getPokemons({
             page,
             cachedPokemons: cachedPokemons.data,
             pokemons: pokemons.data,
@@ -26,9 +40,9 @@ const PokemonsPage = () => {
       >
         {({ mutatePage }) => (
           <>
-            <div className="my-4 md:my-6 lg:my-8 w-full">
+            <div className="flex w-full flex-col justify-center">
               <PokemonForm
-                placeholder="Search for a pokémon..."
+                placeholder="Search for a pokémon"
                 mutatePage={mutatePage}
               />
             </div>
