@@ -3,8 +3,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "@/app/globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
-import { StoreProvider } from "../StoreProvider";
-
+ 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -19,10 +18,8 @@ export default function RootLayout({
 }) {  
 
   return (
-    <ClerkProvider>
-        <StoreProvider  >
-          {children} 
-        </StoreProvider>
+    <ClerkProvider> 
+          {children}  
     </ClerkProvider>
   )
 }

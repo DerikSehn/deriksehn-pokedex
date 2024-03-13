@@ -12,7 +12,9 @@ import gsap from 'gsap-trial';
 import { ScrollSmoother } from 'gsap-trial/ScrollSmoother';
 import { ScrollTrigger } from 'gsap-trial/ScrollTrigger';
 import { useRef } from "react";
-import React from "react";
+import React from "react"; 
+import PokeProvider from "@/redux/PokeProvider";
+import Pokemons from "./pokemons/page";
 
 
 gsap.registerPlugin(useGSAP, ScrollTrigger, ScrollSmoother);
@@ -33,18 +35,19 @@ export default function Home() {
     [smoother]
   );
 
+
   return (
     <html lang="en cursor-none" >
       <head>
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
           rel="stylesheet" />
       </head>
-      {/* gradient left dark blue */}
+    
       <body ref={smoother} className={`min-h-screen text-white bg-gradient-to-b from-rich_black-900/30  to-rich_black-900/5 text-cool_gray-900 font-bold text-4xl   `} >
         {/* <MouseArrow/> */}
         <Header />
         <div id="smooth-content" className="relative h-[2000vh] z-10"  >
-          {/* <ImageSequence/> */}
+          
           <Hero />
           <List />
           <Projects />

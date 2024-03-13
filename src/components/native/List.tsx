@@ -3,7 +3,11 @@ import React from 'react'
 import gsap from 'gsap-trial'
 import SearchInput from './util/SearchInput';
 import PokeDexCard from './elements/PokeDex';
- 
+import PokeProvider from '@/redux/PokeProvider';
+import Pokemons from '@/app/pokemons/page';
+import Image from 'next/image';
+import listbgImg from '@/assets/background/pokemonScenario.webp';
+import Filters from '@/app/filters/page';
 
 
 
@@ -25,6 +29,7 @@ function List() {
           pin: true,
           scrub: 1,
           end: () => "+=" + document.querySelector("#List")
+          //@ts-ignore
             ?.offsetWidth
         }
       });
@@ -76,10 +81,22 @@ function List() {
         </PokeDexCard>
       </section>
 
-      <section id='slide2' className="section z-1  w-screen h-screen   bg-naples_yellow-400  grid lg:grid-cols-12 grid-cols-1 content-start">
-        <div id="slide-2-filters" className='fixed w-full col-span-3 p-4 pt-28 flex flex-col justify-center space-y-2'>
-        
+      <section id='slide2' className="section z-1 pt-32 2xl:pt-52  w-screen h-screen  bg-finn-100 ">
+        <div className='absolute w-full h-full top-0'> 
+       <Image 
+        id="hero-image-squirtle"
+        className="z-1 w-full h-full object-cover brightness-50"
+        src={listbgImg} alt="logo"
+        layout="fill"
+        objectFit="cover"
+        />
+        <div className='absolute w-full h-full bg-gradient-to-b from-rich_black-100/0  via-ebony-100 to-rich_black-600 z-2'></div>
         </div>
+           
+          <PokeProvider>
+            <Filters/>
+            <Pokemons/>
+          </PokeProvider>
       </section>
     </div>
   )

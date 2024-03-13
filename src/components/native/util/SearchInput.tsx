@@ -17,12 +17,12 @@ const SearchInput = (inputProps: JSX.IntrinsicAttributes & React.ClassAttributes
         type="text"
         value={searchValue}
         onChange={handleSearchChange}
-        placeholder="Pesquisar"
-        className="w-full px-10 py-1 transition-all text-rich_black-700 rounded-xl shadow-sm focus:outline-none focus:ring-1 focus:ring-coquelicot-500 focus:border-transparent"
+        placeholder="Search"
+        className="w-full px-10 py-2 transition-all font-mont rounded-2xl focus:outline-none focus:ring-1  focus:shadow-gunmetal-700 shadow-2xl"
         {...inputProps}
         />
         <Button 
-        className="absolute z-10 right-0 top-0 px-10 h-full rounded-r-xl bg-gunmetal-500 hover:bg-rich_black-800"
+        className="absolute z-10 right-0 top-0 px-10 h-full rounded-r-xl bg-gunmetal-600 hover:bg-gunmetal-700 "
             type="submit" color="black" variant="destructive">
             <i className="material-icons text-white scale-150">search</i>
             </Button>
