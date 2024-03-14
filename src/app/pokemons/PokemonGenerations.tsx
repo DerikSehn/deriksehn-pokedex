@@ -103,13 +103,14 @@ const PokemonGenerations = ({
   );
 
   return (
-    <Dialog>
+    <div className="w-full grid grid-cols-12">
+      <span className="col-span-3 text-center">
+
       <Button
         disabled={isLoading}
         className={
-          "bg-primaryGray px-4 py-1 rounded-lg text-white hover:border-transparent focus:outline-none " +
-          " " +
-          (isLoading
+          "overflow-visible bg-rich_black-500 px-4 py-1 rounded-lg text-white hover:border-transparent focus:outline-none " +
+  (isLoading
             ? "opacity-25 cursor-default"
             : "cursor-pointer transform hover:-translate-y-1 hover:shadow transition-all duration-200 ease-in-out")
         }
@@ -145,11 +146,13 @@ const PokemonGenerations = ({
           )}
         </div>
       </Button>
-      <Button
+      </span><span className="col-span-12 text-center">
+      <Button   
+
         title="Pokémon Generations"
         onClick={changeGenerationHandler}
       >
-        <div className="mx-auto py-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-x-5 gap-y-6">
+        <div className="space-x-2 grid grid-cols-4">
           {generations.map((images, index) => (
             <PokemonGenerationCard
               key={`generations-${index}`}
@@ -170,8 +173,10 @@ const PokemonGenerations = ({
             />
           ))}
         </div>
-      </Button>
-    </Dialog>
+      </Button> 
+      </span>
+      </div>
+     
   );
 };
 export default PokemonGenerations;

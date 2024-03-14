@@ -62,9 +62,21 @@ const PokemonForm = ({
   };
 
   return (
-    <div className="flex items-center justify-center flex-col flex-wrap">
-      <div className="relative inline-flex">
-          
+    <div className="flex items-center justify-center flex-col   overflow-visible ">
+     
+          <div className="h-full w-screen"  >
+
+        <PokemonGenerations
+          selectedGeneration={selectedGeneration}
+          setSelectedGeneration={setSelectedGeneration}
+          changeGenerationHandler={changeGenerationHandler}
+          isLoading={isLoading}
+        />
+     </div>
+     
+      
+          <div className="h-20"  >
+
         <SearchInput
           placeholder={placeholder || "Search an item"}
           value={value}
@@ -77,21 +89,12 @@ const PokemonForm = ({
           onChange={(e: React.FormEvent<HTMLInputElement>) =>
             setValue(e.currentTarget.value)
           }
-        />
-      </div>
-
-      <div className="ml-2 md:ml-5 mt-3 md:mt-0">
-        <PokemonGenerations
-          selectedGeneration={selectedGeneration}
-          setSelectedGeneration={setSelectedGeneration}
-          changeGenerationHandler={changeGenerationHandler}
-          isLoading={isLoading}
-        />
-      </div>
-
+          />
+          </div>
+     
       <button
         className={
-          "ml-2 md:ml-5 mt-3 md:mt-0 bg-primary py-1 px-8 rounded-md text-white font-semibold  focus:outline-none transition duration-200 ease-in-out" +
+          " bg-primary  rounded-md text-white font-semibold  focus:outline-none transition duration-200 ease-in-out" +
           (isLoading
             ? " opacity-25 cursor-default"
             : " hover:bg-white hover:text-primary transform hover:-translate-y-1 cursor-pointer")

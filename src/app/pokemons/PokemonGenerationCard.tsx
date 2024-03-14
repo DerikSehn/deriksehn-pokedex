@@ -1,4 +1,5 @@
 import { romanize } from "@/components/native/util/romanize";
+import Image from "next/image";
 import React from "react";
  
 type Props = {
@@ -19,7 +20,7 @@ const PokemonGenerationCard = ({
       onClick={() => handleClick()}
       // className="w-full tracking-wide text-center text-black bg-primaryGray mx-auto px-8 py-5 rounded-lg hover:bg-primarySecondary hover:text-white hover:font-medium transition-all duration-200 ease-in-out cursor-pointer"
       className={
-        "w-full tracking-wide text-center mx-auto px-8 py-5 rounded-lg hover:font-medium transition-all duration-200 ease-in-out cursor-pointer " +
+        "w-full overflow-visible tracking-wide text-center px-8 py-5 rounded-lg hover:font-medium transition-all duration-200 ease-in-out cursor-pointer " +
         (isSelected
           ? "bg-primarySecondary text-white transform hover:-translate-y-2 hover:shadow-md"
           : "bg-primaryGray text-black hover:bg-primarySecondary hover:text-white")
@@ -27,7 +28,7 @@ const PokemonGenerationCard = ({
     >
       <div className="flex justify-center items-center">
         {images.map((image) => (
-          <img key={image} className="w-16 h-16" src={image} alt="Pokemon" />
+          <Image width={64} height={64} key={image}  src={image} alt="Pokemon" />
         ))}
       </div>
       <p className="text-md mt-4">Generation {romanize(generation)}</p>
