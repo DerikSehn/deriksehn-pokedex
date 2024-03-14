@@ -72,18 +72,24 @@ const pokemonsSlice = createSlice({
   reducers: {
     ...statusHandlerReducer,
     initializePokemonsReducer(state: any, action: PayloadAction<{ size: number }>) {
-      const { size } = action.payload;
+      const size = action?.payload.size || 0
+      console.log(size)
       const nullValues = new Array<null>(size).fill(null);
+      console.log('nullValues', nullValues)
       if (state.data.length === 0) {
         state.data = nullValues;
       } else {
         state.data = state.data.concat(nullValues);
       }
+      console.log('nullValues', nullValues)
+
     },
     getPokemonsReducer(
       state: any,
       action: PayloadAction<{ pokemon: Pokemon; index: number; size: number }>
     ) {
+      console.log('nullValues', state.data)
+
       const { pokemon, size, index } = action.payload;
       console.log(pokemon)
       const isPokemonAlreadyExists = state.data.find(
@@ -91,6 +97,7 @@ const pokemonsSlice = createSlice({
           existingPokemon !== null && existingPokemon.id === pokemon.id
       );
       if (!isPokemonAlreadyExists) {
+        console.log('isPokemonAlreadyExists', isPokemonAlreadyExists)
         state.data[state.data.length - (size - index)] = pokemon;
       }
     },
@@ -131,34 +138,36 @@ const statusHandler = { initialize, error, success };
 
 export const getPokemons = wrapReduxAsyncHandler(
   statusHandler,
-  async (dispatch, { page, cachedPokemons, pokemons }: any)  => {
-    const size = PAGINATE_SIZE - (pokemons.length % PAGINATE_SIZE);
-    const results = cachedPokemons.slice(page, page + size);
+  async (dispatch, { page, cachedPokemons, pokemons }: any)  => { 
+    const size = PAGINATE_SIZE - (pokemons?.length % PAGINATE_SIZE);
+     const results = cachedPokemons?.slice(page, page + size) || [];
+    console.log(page, cachedPokemons, pokemons)
     dispatch(initializePokemonsReducer({ size }));
-    console.log( results)
-    for await (const [index, { url }] of results.entries()) {
-      const pokemonId = Number(url.split("/").slice(-2)[0]);
-      const pokemon = await fromApi.getPokemonByNameOrId(pokemonId);
+    
+      for await (const [index, { url }] of results.entries()) {
+        const pokemonId = Number(url.split("/").slice(-2)[0]);
+        const pokemon = await fromApi.getPokemonByNameOrId(pokemonId);
+      console.log(pokemon)
       const pokemonImageUrl = transformSpriteToBaseImage(
         pokemon.id,
         baseImageUrl
-      );
-
-      dispatch(
-        getPokemonsReducer({
-          pokemon: {
-            ...camelCaseObject(pokemon),
-            sprites: {
-              frontDefault: pokemonImageUrl,
+        ); 
+        dispatch(
+          getPokemonsReducer({
+            pokemon: {
+              ...camelCaseObject(pokemon),
+              sprites: {
+                frontDefault: pokemonImageUrl,
+              },
             },
-          },
-          size,
-          index,
-        })
+            size,
+            index,
+          })
+          );
+        }
+      }
+     
       );
-    }
-  }
-);
 
 export const getPokemonById = wrapReduxAsyncHandler(
   statusHandler,
@@ -199,10 +208,14 @@ export const getPokemonsDynamically = wrapReduxAsyncHandler(
 export const getPokemonsByType = wrapReduxAsyncHandler(
   statusHandler,
   async (dispatch, { page, cachedPokemons, pokemons }: any)  => {
+    console.log('getPokemonsByType', page, cachedPokemons, pokemons)
     const size = PAGINATE_SIZE - (pokemons.length % PAGINATE_SIZE);
+    console.log(size)
     const results = cachedPokemons.slice(page, page + size);
-    dispatch(initializePokemonsReducer({ size }));
+    console.log(size)
 
+    dispatch(initializePokemonsReducer({ size }));
+    console.log(size)
     for await (const [index, { url }] of results.entries()) {
       const pokemonId = Number(url.split("/").slice(-2)[0]);
       const pokemon = await fromApi.getPokemonByNameOrId(pokemonId);

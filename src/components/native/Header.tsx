@@ -1,6 +1,5 @@
 
-import { UserButton } from "@clerk/nextjs"
-import Link from "next/link"
+ import Link from "next/link"
 import React, { useEffect, useState } from "react"
 import Logo from "./Logo"
 import gsap from "gsap"
@@ -24,7 +23,7 @@ const Header = () => {
             About
           </Link>
         </nav>
-        <UserButton afterSignOutUrl="/" />
+        <div/>
       </div>
     </header>
   )

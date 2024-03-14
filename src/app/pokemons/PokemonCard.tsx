@@ -21,7 +21,7 @@ const ImageContainerStyling = {
 type Props = Pokemon;
 
 const PokemonCard = ({ id, name, sprites, types }: Props) => {
- 
+ console.log(id, name, sprites, types)
   const backgroundColors = types.map(({ type }) => {
     const [[, backgroundColor]] = Object.entries(PokemonTypeColors).filter(
       ([key, _]) => key === type.name

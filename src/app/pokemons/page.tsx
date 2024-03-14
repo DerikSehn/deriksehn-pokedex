@@ -1,8 +1,8 @@
 "use client";
 import React, { useEffect } from "react"; 
-import { useSelector } from "react-redux"; 
+import { useSelector, useStore } from "react-redux"; 
 import { getPokemons, pokemonsSelector } from "@/redux/slices/pokemonSlice";
-import { cachedPokemonsSelector } from "@/redux/slices/cachedPokemonsSlice";
+import { cachedPokemonsSelector, getCachedPokemons } from "@/redux/slices/cachedPokemonsSlice";
 import InfiniteScroll from "@/components/native/InfiniteScroll";
 import { SliceStatus } from "@/lib/globals";
 import PokemonForm from "./PokemonForm";
@@ -12,22 +12,25 @@ import PokemonCard from "./PokemonCard";
 const PokemonsPage = () => {
   const pokemons = useSelector(pokemonsSelector);
   const cachedPokemons = useSelector(cachedPokemonsSelector);
-
-  const handleGetPokemons = () => {
+  const {dispatch} = useStore()
+  const handleGetPokemons = async() => {
     
     const obj = { page: 0, cachedPokemons: cachedPokemons.data, pokemons: pokemons.data }
 
     console.log(obj)
-    getPokemons(obj);
+    dispatch(getCachedPokemons({ page: 0, cachedPokemons: cachedPokemons.data, pokemons: pokemons.data }) as any)
+    setTimeout(() => {
+        dispatch(getPokemons({ page: 0, cachedPokemons: cachedPokemons.data, pokemons: pokemons.data }) as any);
+        
+    }, 599);
+    
   };
   useEffect(() => {
-    handleGetPokemons();
-  
+    handleGetPokemons(); 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   
-
-  
+  console.log(cachedPokemons)
   console.log(pokemons)
   return ( 
       <InfiniteScroll
@@ -55,6 +58,7 @@ const PokemonsPage = () => {
                 cachedPokemons.status.state === SliceStatus.IDLE
               ) && (
                 <>
+                {console.log(pokemons.data)}
                   <InfiniteScroll.Container>
                     {pokemons.data.map((pokemon, index) =>
                       pokemon === null ? (

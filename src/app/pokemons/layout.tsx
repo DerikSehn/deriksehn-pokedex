@@ -2,13 +2,12 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "@/app/globals.css";
-import { ClerkProvider } from "@clerk/nextjs";
- 
+  
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Dérik Sehn",
-  description: "Desenvolvedor Front-end",
+  title: "PokéDex",
+  description: "Derik Sehn made this PokéDex. It's a example of how to use Next.js, Redux and TailwindCSS.",
 };
 
 export default function RootLayout({
@@ -17,9 +16,5 @@ export default function RootLayout({
   children: React.ReactNode
 }) {  
 
-  return (
-    <ClerkProvider> 
-          {children}  
-    </ClerkProvider>
-  )
+  return children 
 }

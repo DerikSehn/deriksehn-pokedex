@@ -115,11 +115,13 @@ export const cachedPokemonsSelector = (state: RootState) =>
 export const getCachedPokemons = wrapReduxAsyncHandler(
   statusHandler,
   async (dispatch) => {
+    console.log("getCachedPokemons");
     const {
       results,
     }: { results: NamedAPIResource[] } = await fromApi.getPokemons(
       Number(PokemonGenerationsEnum.GENERATION_7)
     );
+    console.log(results)
     const transformedPokemons = results.map((res: NamedAPIResource) => ({
       ...res,
       distance: 0,

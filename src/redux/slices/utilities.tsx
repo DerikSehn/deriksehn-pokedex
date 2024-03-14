@@ -9,9 +9,11 @@ export const statusHandlerReducer = {
     state.status.state = SliceStatus.LOADING;
   },
   error: (state: any, action: PayloadAction) => {
+    console.log("state", state, action)
     state.status.state = SliceStatus.ERROR;
   },
   success: (state: any, action: PayloadAction) => {
+    console.log("state", state, action)
     state.status.state = SliceStatus.SUCCESS;
   },
 };
@@ -25,37 +27,23 @@ type StatusHandler = {
 export type WrapReduxAsyncHandlerType = (
   args?: any
 ) => (dispatch: React.Dispatch<any>) => Promise<void>;
-
-/* export const wrapReduxAsyncHandler = (
-  statusHandler: StatusHandler,
-  callback: (dispatch: Dispatch<any>, args: any) => Promise<void>
-) => ((args?: any) => async (dispatch: Dispatch<any>) => {
-  dispatch(statusHandler.initialize({}));
-   console.log("args", statusHandler)
-  callback(dispatch, args)
-    .then(() => {
-      dispatch(statusHandler.success({}));
-    })
-    .catch((err) => {
-      console.error(err);
-    });
-}) ; */
+ 
 
 export const wrapReduxAsyncHandler = (
   statusHandler: StatusHandler,
   callback: (dispatch: Dispatch<any>, args: any) => Promise<void>
-) => {
-
+) => { 
   return  (args: any) => async (dispatch: Dispatch<any>) =>  {
-
-      console.log(dispatch )
+     
   dispatch(statusHandler.initialize({}));
-   console.log("args", statusHandler)
-  callback(dispatch, {})
+   console.log("args", args)
+  callback(dispatch, args)
     .then(() => {
+      console.log("statusHandler.success({})");
       dispatch(statusHandler.success({}));
     })
     .catch((err) => {
+      console.log(err);
       console.error(err);
     });
 }};

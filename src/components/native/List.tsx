@@ -1,14 +1,12 @@
-import { useGSAP } from '@gsap/react'
-import React from 'react'
-import gsap from 'gsap-trial'
-import SearchInput from './util/SearchInput';
+import Pokemons from '@/app/pokemons/page';
+import listbgImg from '@/assets/background/pokemonScenario.webp';
+ import { useGSAP } from '@gsap/react';
+import gsap from 'gsap-trial';
+import Image from 'next/image';
+import React from 'react';
 import PokeDexCard from './elements/PokeDex';
 import PokeProvider from '@/redux/PokeProvider';
-import Pokemons from '@/app/pokemons/page';
-import Image from 'next/image';
-import listbgImg from '@/assets/background/pokemonScenario.webp';
-import Filters from '@/app/filters/page';
-
+ 
 
 
 function List() {
@@ -95,7 +93,7 @@ function List() {
           <div className='flex text-6xl font-pokemon-solid justify-center text-naples_yellow-400 shadow-rich_black-700 drop-shadow-2xl'>
           PokéDex 
         </div>
-          <PokeProvider>
+          <PokeProvider >
             <div className='lg:mt-32 mt-10'/>
             <Pokemons/>
           </PokeProvider>
