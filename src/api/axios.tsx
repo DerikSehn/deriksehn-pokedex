@@ -21,14 +21,13 @@ export const createApiRequest = async (
       data,
     });
     return response.data;
-  } catch (err) {
-    console.error(err);
+  } catch (err) { 
     throw new Error(err);
     // const statusCode = err.response.status;
     // const messages = err.response.data.data[0].messages;
     // throw new Error(JSON.stringify({ statusCode, messages }));
   }
 };
-export const baseImageUrl = "https://pokeapi.co/api/v2";
+export const baseImageUrl = "";
 
 export default axios;

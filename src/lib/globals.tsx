@@ -97,8 +97,29 @@ export const importImages = (image: string, filetype?: string) => {
 };
 
 export const importPokemonImage = (image: string) => {
-  console.log(`${baseImageUrl}/assets/pokemons/${image}.png`)
-  return `${baseImageUrl}/assets/pokemons/${image}.png`;
+  return `${baseImageUrl}/pokemons/${image}.png`;
+};
+
+
+export const PokemonTypeImages = {
+  normal: '/types/normal.png',
+  fire: '/types/fire.png',
+  fighting: '/types/fighting.png',
+  water: '/types/water.png',
+  flying: '/types/flying.png',
+  grass: '/types/grass.png',
+  poison: '/types/poison.png',
+  electric: '/types/electric.png',
+  ground: '/types/ground.png',
+  psychic: '/types/psychic.png',
+  rock: '/types/rock.png',
+  ice: '/types/ice.png',
+  bug: '/types/bug.png',
+  dragon: '/types/dragon.png',
+  ghost: '/types/ghost.png',
+  dark: '/types/dark.png',
+  steel: '/types/steel.png',
+  fairy: '/types/fairy.png',
 };
 
 export const PokemonTypePlaceholders = {

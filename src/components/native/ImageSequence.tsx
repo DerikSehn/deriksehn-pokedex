@@ -14,7 +14,6 @@ export default function ScrollImageSequence(){
         const handleScroll = () => {
             const scrollTop = window.scrollY;
             const index = Math.floor(scrollTop / 20 + 1);
-            console.log(index);
             setImageName(String(index).padStart(3, '0'));
         };
         window.addEventListener("scroll", handleScroll);
@@ -22,7 +21,6 @@ export default function ScrollImageSequence(){
     }, []);
     const src = `${apiUrl}/cars-video/ezgif-frame-${imageName}.jpg`
 
-    console.log(src);
     return <div className="absolute z-0 h-full">
      <Image
         width={1920}

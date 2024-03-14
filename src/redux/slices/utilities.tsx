@@ -5,15 +5,12 @@ import { lPad } from "@/lib/lPad";
 
 export const statusHandlerReducer = {
   initialize: (state: any, action: PayloadAction) => {
-    console.log("state", state, action)
     state.status.state = SliceStatus.LOADING;
   },
   error: (state: any, action: PayloadAction) => {
-    console.log("state", state, action)
     state.status.state = SliceStatus.ERROR;
   },
   success: (state: any, action: PayloadAction) => {
-    console.log("state", state, action)
     state.status.state = SliceStatus.SUCCESS;
   },
 };
@@ -36,14 +33,11 @@ export const wrapReduxAsyncHandler = (
   return  (args: any) => async (dispatch: Dispatch<any>) =>  {
      
   dispatch(statusHandler.initialize({}));
-   console.log("args", args)
   callback(dispatch, args)
     .then(() => {
-      console.log("statusHandler.success({})");
       dispatch(statusHandler.success({}));
     })
     .catch((err) => {
-      console.log(err);
       console.error(err);
     });
 }};
@@ -52,6 +46,5 @@ export const transformSpriteToBaseImage = (
   pokemonId: number,
   baseUrl: string
 ): string => {
-  console.log("pokemonId", pokemonId, baseUrl)
   return baseUrl + lPad(pokemonId, 3) + ".png";
 };

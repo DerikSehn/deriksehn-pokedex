@@ -49,7 +49,6 @@ const PokemonForm = ({
   };
 
   const changeGenerationHandler = () => {
-    console.log("changeGenerationHandler", value)
     if (!isLoading) {
       dispatch(resetPokemonsReducer({} as {} & void));
       dispatch(filterPokemonsByGenerationReducer({ selectedGeneration }));

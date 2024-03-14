@@ -24,7 +24,6 @@ const InfiniteScrollContext = createContext<ContextType>({
 const Waypoint = () => {
 
 
-  console.log('render')
   const { isLoading, setPage, page, paginationHandler, data } = useContext(
     InfiniteScrollContext
   );
@@ -32,7 +31,6 @@ const Waypoint = () => {
 
   useEffect(() => {
     setPage(data.length - (data.length % 6));
-    console.log("useEffect", page, data.length, data.length % 6)
     //eslint-disable-next-line
   }, []);
 
@@ -41,7 +39,6 @@ const Waypoint = () => {
       {!isLoading && (
         <ReactWaypoint
           onEnter={() => {
-            console.log("onEnter", page, data.length, data.length % 6)
             const dispatchPage = page + (data.length > page ? 6 : 0);
             setPage(dispatchPage);
             dispatch(paginationHandler(dispatchPage) as any);

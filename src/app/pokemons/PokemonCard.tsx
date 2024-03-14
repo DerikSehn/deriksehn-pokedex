@@ -21,7 +21,7 @@ const ImageContainerStyling = {
 type Props = Pokemon;
 
 const PokemonCard = ({ id, name, sprites, types }: Props) => {
- console.log(id, name, sprites, types)
+   
   const backgroundColors = types.map(({ type }) => {
     const [[, backgroundColor]] = Object.entries(PokemonTypeColors).filter(
       ([key, _]) => key === type.name
@@ -33,13 +33,11 @@ const PokemonCard = ({ id, name, sprites, types }: Props) => {
     const [[, image]] = Object.entries(PokemonTypePlaceholders).filter(
       ([key, _]) => key === type.name
     );
-
     return image;
   });
 
 
   const visualizePokemonDetails = () => {
-    console.log("Visualize Pokemon Details");
   }
 
   return (

@@ -57,10 +57,8 @@ const cachedPokemonsSlice = createSlice({
       }>
     ) {
       const { pokemonName } = action.payload;
-      console.log(state.data)
       state.data = state.cache
         .map((pokemon) => {
-          console.log(pokemon)
           return {
             ...pokemon,
             distance: Levenshtein.get(pokemon.name, pokemonName),
@@ -68,7 +66,6 @@ const cachedPokemonsSlice = createSlice({
         })
         .sort((a, b) => a.distance - b.distance);
 
-      console.log(state.data);
     },
     filterPokemonsByGenerationReducer(
       state,
@@ -115,13 +112,11 @@ export const cachedPokemonsSelector = (state: RootState) =>
 export const getCachedPokemons = wrapReduxAsyncHandler(
   statusHandler,
   async (dispatch) => {
-    console.log("getCachedPokemons");
     const {
       results,
     }: { results: NamedAPIResource[] } = await fromApi.getPokemons(
       Number(PokemonGenerationsEnum.GENERATION_7)
     );
-    console.log(results)
     const transformedPokemons = results.map((res: NamedAPIResource) => ({
       ...res,
       distance: 0,

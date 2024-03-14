@@ -6,7 +6,7 @@ import Hero from "@/components/native/Hero";
 import ImageSequence from "@/components/native/ImageSequence";
 import MouseArrow from "@/components/native/MouseArrow";
 import Projects from "@/components/native/Projects";
-import List from "@/components/native/List";
+import PokeDexSection from "@/components/native/PokeDexSection";
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap-trial';
  import { ScrollTrigger } from 'gsap-trial/ScrollTrigger';
@@ -45,12 +45,13 @@ export default function Home() {
       <body /* data-scroll-container */ className={`min-h-screen text-white bg-gradient-to-b from-rich_black-900/30  to-rich_black-900/5 text-cool_gray-900 font-bold text-4xl   `} >
         {/* <MouseArrow/> */}
         <Header />
-        <div id="smooth-content" className="relative h-[2000vh] z-10"  >
+        <div id="smooth-content" className="relative h-[2000vh] z-10 overflow-x-hidden"  >
           
           <Hero />
-          <List />
-          <Projects />
-          <Contact />
+          <PokeDexSection /> 
+          <PokeProvider>
+            <Pokemons />
+          </PokeProvider>
           <Footer />
         </div>
       </body>

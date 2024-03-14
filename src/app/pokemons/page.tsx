@@ -17,12 +17,8 @@ const PokemonsPage = () => {
     
     const obj = { page: 0, cachedPokemons: cachedPokemons.data, pokemons: pokemons.data }
 
-    console.log(obj)
     dispatch(getCachedPokemons({ page: 0, cachedPokemons: cachedPokemons.data, pokemons: pokemons.data }) as any)
-    setTimeout(() => {
-        dispatch(getPokemons({ page: 0, cachedPokemons: cachedPokemons.data, pokemons: pokemons.data }) as any);
-        
-    }, 599);
+     
     
   };
   useEffect(() => {
@@ -30,8 +26,6 @@ const PokemonsPage = () => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   
-  console.log(cachedPokemons)
-  console.log(pokemons)
   return ( 
       <InfiniteScroll
         data={pokemons.data}
@@ -46,19 +40,18 @@ const PokemonsPage = () => {
       >
         {({ mutatePage }) => (
           <>
-            <div className="flex w-full flex-col justify-center">
+            <div className="flex flex-col justify-center bg-rich_black-600 w-screen">
               <PokemonForm
                 placeholder="Search for a pokémon"
                 mutatePage={mutatePage}
               />
             </div>
-            <div className="mx-auto w-full text-center">
+            <div className="w-full text-center">
               {!(
                 cachedPokemons.status.state === SliceStatus.LOADING ||
                 cachedPokemons.status.state === SliceStatus.IDLE
               ) && (
                 <>
-                {console.log(pokemons.data)}
                   <InfiniteScroll.Container>
                     {pokemons.data.map((pokemon, index) =>
                       pokemon === null ? (
