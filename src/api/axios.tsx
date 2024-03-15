@@ -1,6 +1,6 @@
 import { HTTP_METHODS } from "@/lib/globals";
 import Axios from "axios";
- 
+
 const axios = Axios.create({
   baseURL: "https://pokeapi.co/api/v2",
 });
@@ -21,7 +21,7 @@ export const createApiRequest = async (
       data,
     });
     return response.data;
-  } catch (err) { 
+  } catch (err) {
     throw new Error(err);
     // const statusCode = err.response.status;
     // const messages = err.response.data.data[0].messages;

@@ -1,12 +1,12 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
- import { NamedAPIResource } from "./types";
- import {
+import { NamedAPIResource } from "./types";
+import {
   statusHandlerReducer,
   transformSpriteToBaseImage,
   wrapReduxAsyncHandler,
 } from "./utilities";
-import { camelCaseObject } from "@/lib/utils/camelCaseObject"; 
- import fromApi from "@/api/fromApi";
+import { camelCaseObject } from "@/lib/utils/camelCaseObject";
+import fromApi, { getPokemonImage } from "@/api/fromApi";
 import { SliceStatus } from "@/lib/globals";
 import { RootState } from "../store";
 import { baseImageUrl } from "@/api/axios";
@@ -131,42 +131,41 @@ const statusHandler = { initialize, error, success };
 
 export const getPokemons = wrapReduxAsyncHandler(
   statusHandler,
-  async (dispatch, { page, cachedPokemons, pokemons }: any)  => { 
+  async (dispatch, { page, cachedPokemons, pokemons }: any) => {
     const size = PAGINATE_SIZE - (pokemons?.length % PAGINATE_SIZE);
-     const results = cachedPokemons?.slice(page, page + size) || [];
+    const results = cachedPokemons?.slice(page, page + size) || [];
     dispatch(initializePokemonsReducer({ size }));
-      console.log('results', results)
-      for await (const [index, { url }] of results.entries()) {
-        const pokemonId = Number(url.split("/").slice(-2)[0]);
-        const pokemon = await fromApi.getPokemonByNameOrId(pokemonId);
-      const pokemonImageUrl = transformSpriteToBaseImage(
-        pokemon.id,
-        baseImageUrl
-        ); 
-        dispatch(
-          getPokemonsReducer({
-            pokemon: {
-              ...camelCaseObject(pokemon),
-              sprites: {
-                frontDefault: pokemonImageUrl,
-              },
-            },
-            size,
-            index,
-          })
-          );
-        }
-      }
-     
+    console.log('results', results)
+    for await (const [index, { url }] of results.entries()) {
+      const pokemonId = Number(url.split("/").slice(-2)[0]);
+      const pokemon = await fromApi.getPokemonByNameOrId(pokemonId);
+      const pokemonImageUrl = getPokemonImage(
+        pokemon.id
       );
+
+      dispatch(
+        getPokemonsReducer({
+          pokemon: {
+            ...camelCaseObject(pokemon),
+            sprites: {
+              frontDefault: pokemonImageUrl,
+            },
+          },
+          size,
+          index,
+        })
+      );
+    }
+  }
+
+);
 
 export const getPokemonById = wrapReduxAsyncHandler(
   statusHandler,
   async (dispatch, { pokemonId }) => {
     const pokemon = await fromApi.getPokemonByNameOrId(pokemonId);
-    const pokemonImageUrl = transformSpriteToBaseImage(
-      pokemon.id,
-      baseImageUrl
+    const pokemonImageUrl = getPokemonImage(
+      pokemon.id
     );
     const transformedPokemon = {
       ...camelCaseObject(pokemon),
@@ -181,9 +180,8 @@ export const getPokemonsDynamically = wrapReduxAsyncHandler(
   async (dispatch, { pokemonIds }) => {
     for await (const id of pokemonIds) {
       const pokemon = await fromApi.getPokemonByNameOrId(id);
-      const pokemonImageUrl = transformSpriteToBaseImage(
-        pokemon.id,
-        baseImageUrl
+      const pokemonImageUrl = getPokemonImage(
+        pokemon.id
       );
       const transformedPokemon = {
         ...camelCaseObject(pokemon),
@@ -198,7 +196,7 @@ export const getPokemonsDynamically = wrapReduxAsyncHandler(
 
 export const getPokemonsByType = wrapReduxAsyncHandler(
   statusHandler,
-  async (dispatch, { page, cachedPokemons, pokemons }: any)  => {
+  async (dispatch, { page, cachedPokemons, pokemons }: any) => {
     const size = PAGINATE_SIZE - (pokemons.length % PAGINATE_SIZE);
     const results = cachedPokemons.slice(page, page + size);
 
@@ -206,10 +204,10 @@ export const getPokemonsByType = wrapReduxAsyncHandler(
     for await (const [index, { url }] of results.entries()) {
       const pokemonId = Number(url.split("/").slice(-2)[0]);
       const pokemon = await fromApi.getPokemonByNameOrId(pokemonId);
-      const pokemonImageUrl = transformSpriteToBaseImage(
-        pokemon.id,
-        baseImageUrl
+      const pokemonImageUrl = getPokemonImage(
+        pokemon.id
       );
+
 
       dispatch(
         getPokemonsReducer({

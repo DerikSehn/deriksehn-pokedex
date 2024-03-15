@@ -8,6 +8,7 @@ import heroBgImg from '@/assets/images/ui/hero-versotech.webp';
 
 import charizard from '@/assets/images/charizard.png';
 import Blob1 from '../blob/Blob1';
+import { PokemonTypePlaceholders } from '@/lib/globals';
 
 function Hero() {
 
@@ -31,7 +32,7 @@ function Hero() {
         x: 50,
         rotate: 0,
         duration: 1.4,
-        delay: .5,
+        delay: .2,
         ease: 'ease-in-out',
         rotateY: 180,
       });
@@ -98,6 +99,7 @@ function Hero() {
         objectFit="cover"
 
       />
+
       <section className='container grid grid-cols-2'>
 
         <div id='charizard-hero-div'
@@ -108,7 +110,7 @@ function Hero() {
           {/* rounded image */}
           <Image
             id="charizard-hero-image"
-            className="rounded-full object-cover shadow-raisin_black-500   drop-shadow-2xl z-2"
+            className="opacity-0 rounded-full object-cover shadow-raisin_black-500   drop-shadow-2xl z-2"
             object-fit="cover"
             style={{
               filter: 'drop-shadow(0 0 0rem #ff0000)',

@@ -1,10 +1,11 @@
 import { SliceStatus } from "@/lib/globals";
 import { PokemonGenerationsEnum, filterPokemonsByGenerationReducer, randomizePokemonsReducer, searchPokemonsByNameReducer } from "@/redux/slices/cachedPokemonsSlice";
 import { pokemonsSelector, resetPokemonsReducer } from "@/redux/slices/pokemonSlice";
-import React, { useEffect, useRef, useState } from "react"; 
+import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import PokemonGenerations from "./PokemonGenerations";
 import SearchInput from "@/components/native/util/SearchInput";
+import { TypeAnimation } from 'react-type-animation';
 
 
 type Props = {
@@ -62,9 +63,9 @@ const PokemonForm = ({
   };
 
   return (
-    <div className="flex items-center justify-center flex-col   overflow-visible ">
-     
-          <div className="h-full w-screen"  >
+    <div className="flex items-center pt-10 justify-center flex-col   overflow-visible  bg-rich_black-800 rounded-t-[4rem] xl:rounded-t-[12rem]">
+
+      <div className="h-full w-screen"  >
 
         <PokemonGenerations
           selectedGeneration={selectedGeneration}
@@ -72,14 +73,12 @@ const PokemonForm = ({
           changeGenerationHandler={changeGenerationHandler}
           isLoading={isLoading}
         />
-     </div>
-     
-      
-          <div className="h-20"  >
-
+      </div>
+      <div className="lg:h-32 h-60   lg:-translate-y-[12dvw]"  >
         <SearchInput
           placeholder={placeholder || "Search an item"}
           value={value}
+          disabled={isLoading}
           onSearch={() => submitFormHandler()}
           onKeyPress={(e: React.KeyboardEvent) => {
             if (e.key === "Enter") {
@@ -89,20 +88,9 @@ const PokemonForm = ({
           onChange={(e: React.FormEvent<HTMLInputElement>) =>
             setValue(e.currentTarget.value)
           }
-          />
-          </div>
-     
-      <button
-        className={
-          " bg-primary  rounded-md text-white font-semibold  focus:outline-none transition duration-200 ease-in-out" +
-          (isLoading
-            ? " opacity-25 cursor-default"
-            : " hover:bg-white hover:text-primary transform hover:-translate-y-1 cursor-pointer")
-        }
-        onClick={submitFormHandler}
-      >
-        Search
-      </button>
+        />
+      </div>
+
     </div>
   );
 };

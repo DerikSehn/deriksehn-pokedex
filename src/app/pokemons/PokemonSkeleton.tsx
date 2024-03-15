@@ -3,7 +3,7 @@ import React from "react";
 const PokemonSkeleton = () => {
   return (
     <div
-      className="w-full rounded-lg overflow-hidden shadow-lg mx-auto cursor-pointer hover:shadow-2xl transition-all duration-75 ease-in-out"
+      className="w-full rounded-2xl overflow-hidden shadow-lg mx-auto cursor-pointer hover:shadow-2xl transition-all duration-75 ease-in-out"
       style={{
         backgroundColor: "#E3E3E3",
       }}

@@ -29,6 +29,7 @@ const generations = [
     importPokemonImage("chimcar"),
     importPokemonImage("turtwig"),
   ],
+  null,
   [
     importPokemonImage("oshawott"),
     importPokemonImage("tepig"),
@@ -39,6 +40,7 @@ const generations = [
     importPokemonImage("fennekin"),
     importPokemonImage("chespin"),
   ],
+  null,
   [
     importPokemonImage("popplio"),
     importPokemonImage("litten"),
@@ -104,79 +106,86 @@ const PokemonGenerations = ({
 
   return (
     <div className="w-full grid grid-cols-12">
-      <span className="col-span-3 text-center">
+      <span className="col-span-12 my-10 text-center">
 
-      <Button
-        disabled={isLoading}
-        className={
-          "overflow-visible bg-rich_black-500 px-4 py-1 rounded-lg text-white hover:border-transparent focus:outline-none " +
-  (isLoading
-            ? "opacity-25 cursor-default"
-            : "cursor-pointer transform hover:-translate-y-1 hover:shadow transition-all duration-200 ease-in-out")
-        }
-      >
-        <div className="flex justify-between">
-          {selectedGeneration !== null ? (
-            <>
-              {generations[pokemonGenerationsToIndex(selectedGeneration)].map(
-                (image, index) => (
-                  <PokemonIcon
-                    key={`${image}-${index}`}
-                    src={image}
-                    alt={`Pokemon Icon Image`}
-                  />
-                )
-              )}
-            </>
-          ) : (
-            <>
-              <PokemonIcon
-                src={importPokemonImage("bulbasaur")}
-                alt="Bulbasaur"
-              />
-              <PokemonIcon
-                src={importPokemonImage("charmander")}
-                alt="Charmander"
-              />
-              <PokemonIcon
-                src={importPokemonImage("squirtle")}
-                alt="Squirtle"
-              />
-            </>
+        <Button
+          disabled={isLoading}
+          className={
+            "overflow-visible bg-rich_black-500 " +
+            "px-4 py-1 rounded-2xl text-white hover:border-transparent " +
+            "focus:outline-none " +
+            "hover:bg-rich_black-600"
+
+          }
+        >
+          <div className="flex justify-between">
+            {selectedGeneration !== null ? (
+              <>
+                {generations[pokemonGenerationsToIndex(selectedGeneration)].map(
+                  (image, index) => (
+                    <PokemonIcon
+                      height={100}
+                      width={100}
+                      key={`${image}-${index}`}
+                      src={image}
+                      alt={`Pokemon Icon Image`}
+                    />
+                  )
+                )}
+              </>
+            ) : (
+              <>
+                <PokemonIcon height={100}
+                  width={100}
+                  src={importPokemonImage("bulbasaur")}
+                  alt="Bulbasaur"
+                />
+                <PokemonIcon height={100}
+                  width={100}
+                  src={importPokemonImage("charmander")}
+                  alt="Charmander"
+                />
+                <PokemonIcon height={100}
+                  width={100}
+                  src={importPokemonImage("squirtle")}
+                  alt="Squirtle"
+                />
+              </>
+            )}
+          </div>
+        </Button>
+      </span>
+      <span className="col-span-12 text-center">
+
+        <div className="space-x-2 space-y-2 grid grid-cols-12 px-10">
+          {generations.map((images, index) =>
+            <div className="col-span-4">
+              {images ? (
+                <PokemonGenerationCard
+                  key={`generations-${index}`}
+                  images={images}
+                  generation={index + 1}
+                  isSelected={
+                    selectedGeneration === indexToPokemonGenerations(index) &&
+                    selectedGeneration !== null
+                  }
+                  handleClick={() => {
+                    setSelectedGeneration((previousGeneration) => {
+                      const pickedGeneration = indexToPokemonGenerations(index);
+                      return previousGeneration === pickedGeneration
+                        ? null
+                        : pickedGeneration;
+                    });
+                  }}
+                />
+              ) : null}
+            </div>
           )}
         </div>
-      </Button>
-      </span><span className="col-span-12 text-center">
-      <Button   
 
-        title="Pokémon Generations"
-        onClick={changeGenerationHandler}
-      >
-        <div className="space-x-2 grid grid-cols-4">
-          {generations.map((images, index) => (
-            <PokemonGenerationCard
-              key={`generations-${index}`}
-              images={images}
-              generation={index + 1}
-              isSelected={
-                selectedGeneration === indexToPokemonGenerations(index) &&
-                selectedGeneration !== null
-              }
-              handleClick={() => {
-                setSelectedGeneration((previousGeneration) => {
-                  const pickedGeneration = indexToPokemonGenerations(index);
-                  return previousGeneration === pickedGeneration
-                    ? null
-                    : pickedGeneration;
-                });
-              }}
-            />
-          ))}
-        </div>
-      </Button> 
       </span>
-      </div>
-     
+    </div>
+
   );
 };
 export default PokemonGenerations;

@@ -1,0 +1,9 @@
+{
+    "github.copilot.advanced": {
+        "suggest": {
+            "autoComplete": true,
+            "diagnostics": true,
+            "suggestions": true
+        }
+    }
+}

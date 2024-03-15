@@ -5,12 +5,14 @@ import React from 'react'
 type PokemonIconProps = {
   alt: string;
   src: string;
+  height?: number;
+  width?: number;
 };
 
 
-export default function PokemonIcon({ src, alt} : PokemonIconProps) {
+export default function PokemonIcon({ src, alt, height = 50, width = 50 }: PokemonIconProps) {
   return (
-    <Image src={src} alt={alt} width={50} height={50} />
+    <Image src={src} alt={alt} width={width} height={height} />
 
   )
 }
