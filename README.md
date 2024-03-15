@@ -1,4 +1,5 @@
 Pokedex feita em NextJs com Redux Toolkit, Tailwind CSS, GSAP no desafio de entrevista VersoTech;
+link: https://deriksehn-pokedex-magvsqfbf-deriksehns-projects.vercel.app/
 
 ![image](https://github.com/DerikSehn/next-app-template/assets/120342920/26975469-4627-4644-bfbe-71261c1240ae)
 
