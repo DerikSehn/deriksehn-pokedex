@@ -159,10 +159,10 @@ const PokemonGenerations = ({
 
         <div className="space-x-2 space-y-2 grid grid-cols-12 px-10">
           {generations.map((images, index) =>
-            <div className="col-span-4">
+            <div key={`generations-${index}`} className="col-span-4">
               {images ? (
                 <PokemonGenerationCard
-                  key={`generations-${index}`}
+
                   images={images}
                   generation={index + 1}
                   isSelected={
