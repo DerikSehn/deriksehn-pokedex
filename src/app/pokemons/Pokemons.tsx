@@ -53,7 +53,7 @@ const PokemonsPage = () => {
             ) && (
                 <>
                   <InfiniteScroll.Container>
-                    {pokemons.data.map((pokemon: Pokemon, index: number) =>
+                    {pokemons.data.map((pokemon: Pokemon | null, index: number) =>
                       pokemon === null ? (
                         <PokemonSkeleton key={`loading-${index}`} />
                       ) : (

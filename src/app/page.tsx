@@ -6,7 +6,7 @@ import PokeProvider from "@/redux/PokeProvider";
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap-trial';
 import { ScrollTrigger } from 'gsap-trial/ScrollTrigger';
-import Pokemons from "./pokemons/page";
+import Pokemons from "./pokemons/Pokemons";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 

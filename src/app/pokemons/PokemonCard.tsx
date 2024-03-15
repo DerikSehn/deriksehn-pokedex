@@ -36,7 +36,7 @@ const PokemonCard = ({ id, name, sprites, types }: Props) => {
     );
     return image;
   });
-
+  const typePreview = PokemonTypeImages[types[0].type.name as keyof typeof PokemonTypeImages];
 
   const visualizePokemonDetails = () => {
     alert('Implementing...')
@@ -66,8 +66,9 @@ const PokemonCard = ({ id, name, sprites, types }: Props) => {
             <div
               className="absolute opacity-10 scale-150 left-0 bottom-0 saturate-25   ">
               <ProgressiveImage
-                //@ts-ignore
-                preview={PokemonTypeImages[types[0].type.name]}
+
+                preview={imagePlaceholder[0]}
+                src={typePreview}
                 render={(src: any, style: any) => (
                   <Image height={200} width={200} src={src} alt={name} />
                 )}
@@ -89,7 +90,7 @@ const PokemonCard = ({ id, name, sprites, types }: Props) => {
             <ProgressiveImage
               preview={imagePlaceholder[0]}
               src={sprites.frontDefault}
-              render={(src, style) => (
+              render={(src: any, style: any) => (
                 <Image className="scale-[1.5]" layout={'fill'} src={src} alt={name} />
               )}
             />

@@ -3,12 +3,12 @@ import environment from "@/lib/environment";
 import { useEffect, useState } from "react";
 
 
-export default function ScrollImageSequence(){
+export default function ScrollImageSequence() {
     const alt = "image-ex";
-    const {apiUrl} = environment
+    const { apiUrl } = environment
 
     /* padstart 5 */
-    const [imageName, setImageName ] = useState('001');
+    const [imageName, setImageName] = useState('001');
 
     useEffect(() => {
         const handleScroll = () => {
@@ -22,11 +22,11 @@ export default function ScrollImageSequence(){
     const src = `${apiUrl}/cars-video/ezgif-frame-${imageName}.jpg`
 
     return <div className="absolute z-0 h-full">
-     <Image
-        width={1920}
-        height={1080}
-        data-speed="0.1"
-        className="z-0 w-screen object-center "
-        src={src} alt={alt}/>
-        </div> 
+        <Image
+            width={1920}
+            height={1080}
+            data-speed="0.1"
+            className="z-0 w-screen object-center "
+            src={src} alt={alt} />
+    </div>
 }

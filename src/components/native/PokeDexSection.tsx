@@ -1,4 +1,4 @@
-import Pokemons from '@/app/pokemons/page';
+import Pokemons from '@/app/pokemons/Pokemons';
 import listbgImg from '@/assets/background/pokemonScenario.webp';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap-trial';
