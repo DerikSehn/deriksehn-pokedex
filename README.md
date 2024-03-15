@@ -1,6 +1,6 @@
 Pokedex feita em NextJs com Redux Toolkit, Tailwind CSS, GSAP no desafio de entrevista VersoTech;
 ---
-OBS: por conta do pouco tempo disponível, não está 100% desenvolvido. mas abrange os tópicos avaliados como componentização e estrutura do projeto, qualidade de código, design e layout da aplicação
+OBS: por conta do pouco tempo disponível, não está 100% desenvolvido. Felizmeente, abrange os tópicos avaliados como componentização e estrutura do projeto, qualidade de código, design e layout da aplicação
 
 ---
 link: https://deriksehn-pokedex-magvsqfbf-deriksehns-projects.vercel.app/
