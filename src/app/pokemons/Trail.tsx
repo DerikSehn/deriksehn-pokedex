@@ -19,7 +19,7 @@ const Trail = ({ open, children, className, ...props }: Props) => {
   return (
     <div {...props}>
       <div>
-        {trail.map(({ x, height, ...rest }: any, index : any) => (
+        {trail.map(({ x, height, ...rest }: any, index: any) => (
           <animated.div
             key={index}
             style={{

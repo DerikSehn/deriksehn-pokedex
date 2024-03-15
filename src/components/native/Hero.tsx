@@ -1,14 +1,11 @@
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap-trial';
 import Image from 'next/image';
-import React from 'react';
 import { TypeAnimation } from 'react-type-animation';
 
 import heroBgImg from '@/assets/images/ui/hero-versotech.webp';
 
 import charizard from '@/assets/images/charizard.png';
-import Blob1 from '../blob/Blob1';
-import { PokemonTypePlaceholders } from '@/lib/globals';
 
 function Hero() {
 

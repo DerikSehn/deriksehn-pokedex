@@ -1,20 +1,12 @@
 "use client";
-import Contact from "@/components/native/Contact";
 import Footer from "@/components/native/Footer";
-import Header from "@/components/native/Header";
 import Hero from "@/components/native/Hero";
-import ImageSequence from "@/components/native/ImageSequence";
-import MouseArrow from "@/components/native/MouseArrow";
-import Projects from "@/components/native/Projects";
 import PokeDexSection from "@/components/native/PokeDexSection";
+import PokeProvider from "@/redux/PokeProvider";
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap-trial';
 import { ScrollTrigger } from 'gsap-trial/ScrollTrigger';
-import { useRef } from "react";
-import React from "react";
-import PokeProvider from "@/redux/PokeProvider";
 import Pokemons from "./pokemons/page";
-import { LocomotiveScrollProvider } from 'react-locomotive-scroll'
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 

@@ -1,13 +1,13 @@
 "use client";
-import React, { useEffect } from "react";
-import { useSelector, useStore } from "react-redux";
-import { getPokemons, pokemonsSelector } from "@/redux/slices/pokemonSlice";
-import { cachedPokemonsSelector, getCachedPokemons } from "@/redux/slices/cachedPokemonsSlice";
 import InfiniteScroll from "@/components/native/InfiniteScroll";
 import { SliceStatus } from "@/lib/globals";
+import { cachedPokemonsSelector, getCachedPokemons } from "@/redux/slices/cachedPokemonsSlice";
+import { getPokemons, Pokemon, pokemonsSelector } from "@/redux/slices/pokemonSlice";
+import { useEffect } from "react";
+import { useSelector, useStore } from "react-redux";
+import PokemonCard from "./PokemonCard";
 import PokemonForm from "./PokemonForm";
 import PokemonSkeleton from "./PokemonSkeleton";
-import PokemonCard from "./PokemonCard";
 
 const PokemonsPage = () => {
   const pokemons = useSelector(pokemonsSelector);
@@ -53,7 +53,7 @@ const PokemonsPage = () => {
             ) && (
                 <>
                   <InfiniteScroll.Container>
-                    {pokemons.data.map((pokemon, index) =>
+                    {pokemons.data.map((pokemon: Pokemon, index: number) =>
                       pokemon === null ? (
                         <PokemonSkeleton key={`loading-${index}`} />
                       ) : (

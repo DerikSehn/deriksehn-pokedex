@@ -24,7 +24,7 @@ const SearchInput = ({ onSearch, ...inputProps }: { onSearch?: () => any } & JSX
             <Button
                 onClick={onSearch}
                 className="absolute z-10 right-0 top-0 px-10 h-full rounded-r-xl bg-gunmetal-600 hover:bg-gunmetal-700 "
-                type="submit" color="black" variant="destructive">
+                type="submit" color="black" >
                 <i className="material-icons text-white scale-150">search</i>
             </Button>
         </div>

@@ -121,7 +121,7 @@ const PokemonGenerations = ({
           <div className="flex justify-between">
             {selectedGeneration !== null ? (
               <>
-                {generations[pokemonGenerationsToIndex(selectedGeneration)].map(
+                {(generations[pokemonGenerationsToIndex(selectedGeneration)] || []).map(
                   (image, index) => (
                     <PokemonIcon
                       height={100}

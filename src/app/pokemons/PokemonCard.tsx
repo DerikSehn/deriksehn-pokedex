@@ -66,8 +66,9 @@ const PokemonCard = ({ id, name, sprites, types }: Props) => {
             <div
               className="absolute opacity-10 scale-150 left-0 bottom-0 saturate-25   ">
               <ProgressiveImage
+                //@ts-ignore
                 preview={PokemonTypeImages[types[0].type.name]}
-                render={(src, style) => (
+                render={(src: any, style: any) => (
                   <Image height={200} width={200} src={src} alt={name} />
                 )}
               />
